@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["AzureIOT1.csproj", "."]
-RUN dotnet restore "./AzureIOT1.csproj"
+COPY ["StorageIOT1/StorageIOT1.csproj", "."]
+RUN dotnet restore "./StorageIOT1.csproj"
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "AzureIOT1.csproj" -c Release -o /app/build
+WORKDIR "/src/StorageIOT1"
+RUN dotnet build "StorageIOT1.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "AzureIOT1.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "StorageIOT1.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AzureIOT1.dll"]
+ENTRYPOINT ["dotnet", "StorageIOT1.dll"]
