@@ -11,7 +11,7 @@ namespace AzureIOT.Repositories
 {
     public class TableStorageRepository
     {
-        static string connectionString = "DefaultEndpointsProtocol=https;AccountName=storagesn230113;AccountKey=hec6ImTmJwRF49x9QhdWRPiMxiy9x+P9q2UPPUdqxCrlaod8YRGqkN9m6qsCvr9oS0alkRgjN9Cg+AStlod6Wg==;EndpointSuffix=core.windows.net";
+        static string connectionString = "DefaultEndpointsProtocol=https;AccountName=storagenavya;AccountKey=MZGAL/jsqnfxGWFIJaJsiDodks7IgC9pnC2g4IPUoCYS9RTxSCiI4FzPqw1WqWRFnPH71Jm7Fyki+AStDFd3hw==;EndpointSuffix=core.windows.net";
         public static async Task AddTable(string tableName)
         {
             var data = new TableServiceClient(connectionString);
